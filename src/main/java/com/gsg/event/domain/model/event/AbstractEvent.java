@@ -6,7 +6,7 @@ import com.gsg.event.domain.model.invite.InviteManager;
 import java.util.List;
 import java.util.UUID;
 
-public class AbstractEvent {
+public abstract class AbstractEvent implements Event{
     private UUID eventId;
     private List<UUID> eventWishlists;
     private User eventHost;
@@ -15,4 +15,9 @@ public class AbstractEvent {
     private EventLocationAddress eventLocationAddress;
     private String eventLocationMapLink;
     private InviteManager inviteManager;
+
+    private void initializeInviteManager()
+    {
+
+    }
 }

@@ -1,0 +1,80 @@
+swagger: "2.0"
+info:
+  title: "GetSetGift API"
+  description: "This is api for getsetgift"
+  version: "1.0.0"
+basePath: "/v1"
+tags: 
+- name: "wishlist"
+  description: "API to work with wishlist"
+- name: "event"
+  description: "API to work with events"
+- name: "recommendation"
+  description: "API to work with recommendations"
+schemes:
+- "http"
+- "https"
+paths:
+  /event/{eventId}:
+    get:
+      tags:
+        - "event"
+      summary: "Get event by id"
+      description: "Returns a single event"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "eventId"
+          in: "path"
+          description: "ID of the event to be returned"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+          "200":
+            description: "successful operation"
+            schema:
+              $ref: "#/definitions/Event"
+          
+          
+definitions:
+  Event:
+    type: "object"
+    properties:
+      eventId: 
+        type: "integer"
+        format: "int64"
+        example: "33333"
+      eventHost: 
+        type: "string"
+        example: "dddd"
+      eventDateTime:
+        type: "string"
+        format: "date-time"
+        example: "11-27-2020:14-50-00"
+      eventForPerson: 
+        type: "string"
+        example: "xyz abc"
+      eventLocationAddress:
+        type: "string"
+        example: "123 park street ko"
+      eventLocationMapLink:
+        type: "string"
+        example: "www.maps.google.com/kaldkjfak"
+
+ 
+          
+        
+      
+        
+      
+        
+      
+      
+          
+        
+      
+      
+      
+     
+      

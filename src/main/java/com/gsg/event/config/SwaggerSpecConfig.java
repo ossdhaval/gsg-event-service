@@ -1,4 +1,4 @@
-package com.gsg.config;
+package com.gsg.event.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

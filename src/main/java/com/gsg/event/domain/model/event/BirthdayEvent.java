@@ -48,7 +48,7 @@ public class BirthdayEvent extends AbstractEvent
 
         public Builder withWishlists(List<UUID> wishlists){ be.state.setEventWishlists(wishlists); return this; }
         public Builder hostedBy(User eventhost){ be.state.setEventHost(eventhost); return this;}
-        public Builder on(EventDateTime eventDT){ be.state.setEventDateTime(eventDT.getEventDateTime()); return this;}
+        public Builder on(EventDateTime eventDT){ be.state.setEventDateTime(eventDT); return this;}
         public Builder forPerson(String eventforperson){ be.state.setEventForPerson(eventforperson); return this;}
         public Builder atLocation(EventLocationAddress location){ be.state.setEventLocationAddress(location); return this;}
         public Builder locationLink(String link){ be.state.setEventLocationMapLink(link); return this; }

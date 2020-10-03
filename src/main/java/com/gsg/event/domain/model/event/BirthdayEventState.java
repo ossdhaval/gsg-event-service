@@ -2,6 +2,7 @@ package com.gsg.event.domain.model.event;
 
 import com.gsg.kernel.usermgmt.User;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
@@ -16,9 +17,11 @@ public class BirthdayEventState {
     @Transient
     private List<UUID> eventWishlists;
     private UUID eventHostId;
-    private LocalDateTime eventDateTime;
+    @Embedded
+    private EventDateTime eventDateTime;
     private String eventForPerson;
-    private EventLocationAddress eventLocationAddress;
+    @Embedded
+    private Address eventLocationAddress;
     private String eventLocationMapLink;
 
 
@@ -47,11 +50,11 @@ public class BirthdayEventState {
         this.eventHostId = eventHost.getUserId();
     }
 
-    public LocalDateTime getEventDateTime() {
+    public EventDateTime getEventDateTime() {
         return eventDateTime;
     }
 
-    public void setEventDateTime(LocalDateTime eventDateTime) {
+    public void setEventDateTime(EventDateTime eventDateTime) {
         this.eventDateTime = eventDateTime;
     }
 

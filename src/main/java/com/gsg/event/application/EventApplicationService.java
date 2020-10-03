@@ -8,6 +8,8 @@ import com.gsg.kernel.usermgmt.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
@@ -22,7 +24,7 @@ public class EventApplicationService
                 .hostedBy(new AppUser(UUID.randomUUID()))
                 .forPerson("Dhaval")
                 .atLocation(new EventLocationAddress())
-                .on(new EventDateTime())
+                .on(EventDateTime.setTo(LocalDateTime.now()))
                 .locationLink("this-is-a-link")
                 .build();
 

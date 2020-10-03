@@ -5,6 +5,7 @@ import com.gsg.kernel.usermgmt.User;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,7 +16,7 @@ public class BirthdayEventState {
     @Transient
     private List<UUID> eventWishlists;
     private UUID eventHostId;
-    private EventDateTime eventDateTime;
+    private LocalDateTime eventDateTime;
     private String eventForPerson;
     private EventLocationAddress eventLocationAddress;
     private String eventLocationMapLink;
@@ -43,14 +44,14 @@ public class BirthdayEventState {
     }
 
     public void setEventHost(User eventHost) {
-        this.eventHostId = eventHost.getUserId()q;
+        this.eventHostId = eventHost.getUserId();
     }
 
-    public EventDateTime getEventDateTime() {
+    public LocalDateTime getEventDateTime() {
         return eventDateTime;
     }
 
-    public void setEventDateTime(EventDateTime eventDateTime) {
+    public void setEventDateTime(LocalDateTime eventDateTime) {
         this.eventDateTime = eventDateTime;
     }
 

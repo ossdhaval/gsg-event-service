@@ -24,4 +24,44 @@ public class Address {
 
 
     }
+
+    public String getAddrNameOrNumber() {
+        return addrNameOrNumber;
+    }
+
+    public void setAddrNameOrNumber(String addrNameOrNumber) {
+        this.addrNameOrNumber = addrNameOrNumber;
+    }
+
+    public String getAddrStreetOrLocality() {
+        return addrStreetOrLocality;
+    }
+
+    public void setAddrStreetOrLocality(String addrStreetOrLocality) {
+        this.addrStreetOrLocality = addrStreetOrLocality;
+    }
+
+    public String getAddrLandMark() {
+        return addrLandMark;
+    }
+
+    public void setAddrLandMark(String addrLandMark) {
+        this.addrLandMark = addrLandMark;
+    }
+
+    public String getAddrCity() {
+        return addrCity;
+    }
+
+    public void setAddrCity(String addrCity) {
+        this.addrCity = addrCity;
+    }
+
+    public String getAddrPostalCode() {
+        return addrPostalCode;
+    }
+
+    public void setAddrPostalCode(String addrPostalCode) {
+        this.addrPostalCode = addrPostalCode;
+    }
 }

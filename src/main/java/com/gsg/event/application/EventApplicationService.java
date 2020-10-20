@@ -1,8 +1,9 @@
 package com.gsg.event.application;
 
+import com.gsg.event.domain.model.event.Address;
 import com.gsg.event.domain.model.event.BirthdayEvent;
 import com.gsg.event.domain.model.event.EventDateTime;
-import com.gsg.event.domain.model.event.EventLocationAddress;
+
 import com.gsg.event.infrastructure.repository.event.BirthdayEventRepository;
 import com.gsg.kernel.usermgmt.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,12 @@ public class EventApplicationService
         BirthdayEvent be = new BirthdayEvent.Builder(UUID.randomUUID())
                 .hostedBy(new AppUser(UUID.randomUUID()))
                 .forPerson("Dhaval")
-                .atLocation(new EventLocationAddress())
+                .atLocation(new Address())
                 .on(EventDateTime.setTo(LocalDateTime.now()))
                 .locationLink("this-is-a-link")
                 .build();
 
-        birthdayStateRepository.save(be.get)
+
 
         return be;
     }

@@ -25,4 +25,8 @@ public class EventDateTime {
     }
     public LocalTime getEventTime(){ return this.eventDateTime.toLocalTime();}
     public LocalDate getEventDate(){ return this.eventDateTime.toLocalDate();}
+
+    public void setEventDateTime(LocalDateTime eventDateTime) {
+        this.eventDateTime = eventDateTime;
+    }
 }

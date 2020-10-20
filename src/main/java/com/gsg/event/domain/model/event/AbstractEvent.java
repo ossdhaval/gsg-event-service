@@ -12,7 +12,7 @@ public abstract class AbstractEvent implements Event{
     private User eventHost;
     private EventDateTime eventDateTime;
     private String eventForPerson;
-    private EventLocationAddress eventLocationAddress;
+    private Address eventLocationAddress;
     private String eventLocationMapLink;
     private InviteManager inviteManager;
 

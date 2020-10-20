@@ -34,7 +34,7 @@ public class BirthdayEvent extends AbstractEvent
         return false;
     }
 
-    public 
+
 
 
     public static class Builder{
@@ -50,7 +50,7 @@ public class BirthdayEvent extends AbstractEvent
         public Builder hostedBy(User eventhost){ be.state.setEventHost(eventhost); return this;}
         public Builder on(EventDateTime eventDT){ be.state.setEventDateTime(eventDT); return this;}
         public Builder forPerson(String eventforperson){ be.state.setEventForPerson(eventforperson); return this;}
-        public Builder atLocation(EventLocationAddress location){ be.state.setEventLocationAddress(location); return this;}
+        public Builder atLocation(Address location){ be.state.setEventLocationAddress(location); return this;}
         public Builder locationLink(String link){ be.state.setEventLocationMapLink(link); return this; }
         public BirthdayEvent build(){ return be;}
     }

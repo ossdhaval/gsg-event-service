@@ -66,11 +66,11 @@ public class BirthdayEventState {
         this.eventForPerson = eventForPerson;
     }
 
-    public EventLocationAddress getEventLocationAddress() {
+    public Address getEventLocationAddress() {
         return eventLocationAddress;
     }
 
-    public void setEventLocationAddress(EventLocationAddress eventLocationAddress) {
+    public void setEventLocationAddress(Address eventLocationAddress) {
         this.eventLocationAddress = eventLocationAddress;
     }
 

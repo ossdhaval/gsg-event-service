@@ -23,7 +23,9 @@ public class GSGWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin();
+                .formLogin()
+                .and()
+                .logout().logoutUrl("/loggedout");
 //        .successHandler(new GSGAuthenticationSuccessHandler())
     }
 

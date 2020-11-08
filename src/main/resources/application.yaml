@@ -18,9 +18,13 @@ logging:
     org.apache.catalina: DEBUG
 
 server:
-  tomcat:
-    accesslog:
-      enabled: true
+  port: 8443
+  ssl:
+    key-store-password: password
+    key-store: classpath:keystore.p12
+    key-alias: gsg
+  accesslog:
+    enabled: true
 
 
 

@@ -15,4 +15,11 @@ public class GsgEventController
     {
         return "mylogin";
     }
+
+    //TODO : implement logout functionality
+
+
+
+//    @GetMapping("/loggedout")
+//    public String saybye(){ return "Bye";}
 }

@@ -14,6 +14,10 @@ import java.util.UUID;
 public class BirthdayEventState {
     @Id
     private UUID eventId;
+
+
+
+    private String eventTitle;
     @Transient
     private List<UUID> eventWishlists;
     private UUID eventHostId;
@@ -24,7 +28,9 @@ public class BirthdayEventState {
     private Address eventLocationAddress;
     private String eventLocationMapLink;
 
+    public String getEventTitle() { return eventTitle; }
 
+    public void setEventTitle(String title){ this.eventTitle = title;}
 
     public UUID getEventId() {
         return eventId;

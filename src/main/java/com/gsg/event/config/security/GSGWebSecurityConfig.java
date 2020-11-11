@@ -17,21 +17,22 @@ public class GSGWebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity hs) throws Exception
     {
         hs.
-                headers().frameOptions().sameOrigin()
-                .and()
-                .authorizeRequests()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .formLogin()
-                .and()
-                .logout().logoutUrl("/loggedout");
+                authorizeRequests().mvcMatchers("/**").permitAll();
+//                headers().frameOptions().sameOrigin()
+//                .and()
+//                .authorizeRequests()
+//                .anyRequest()
+//                .authenticated()
+//                .and()
+//                .formLogin()
+//                .and()
+//                .logout().logoutUrl("/loggedout");
 //        .successHandler(new GSGAuthenticationSuccessHandler())
     }
 
     @Override
     public void configure(WebSecurity webSecurity){
-        webSecurity.ignoring().mvcMatchers("/css/**", "/webjars/**");
+        webSecurity.ignoring().mvcMatchers("/css/**", "/webjars/**", "/h2/**");
     }
 
     @Override

@@ -22,9 +22,9 @@ import static springfox.documentation.spi.DocumentationType.SWAGGER_2;
  * Spring boot app
  *
  */
-@EnableSwagger2
+
 @SpringBootApplication
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class App 
 {
     public static void main( String[] args )
@@ -32,14 +32,14 @@ public class App
         SpringApplication.run(App.class, args);
     }
 
-    @Bean
-    public Docket swagger() {
-        return new Docket(SWAGGER_2)
-                .select()
-                .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any())
-                .build();
-    }
+//    @Bean
+//    public Docket swagger() {
+//        return new Docket(SWAGGER_2)
+//                .select()
+//                .apis(RequestHandlerSelectors.any())
+//                .paths(PathSelectors.any())
+//                .build();
+//    }
 
     /**
      * this method customises embedded tomcat so that all the requests (/*) are CONFIDENTIAL. </p>
@@ -56,7 +56,7 @@ public class App
                 SecurityConstraint securityConstraint = new SecurityConstraint();
                 securityConstraint.setUserConstraint("CONFIDENTIAL");
                 SecurityCollection collection = new SecurityCollection();
-                collection.addPattern("/*");
+                collection.addPattern("/api/*");
                 securityConstraint.addCollection(collection);
                 context.addConstraint(securityConstraint);
             }

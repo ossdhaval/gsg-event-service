@@ -16,9 +16,6 @@ import java.util.UUID;
 @Service
 public class EventApplicationService
 {
-    @Autowired
-    BirthdayEventRepository birthdayStateRepository;
-
     public BirthdayEvent createBirthdayEvent()
     {
         BirthdayEvent be = new BirthdayEvent.Builder(UUID.randomUUID())
@@ -28,9 +25,6 @@ public class EventApplicationService
                 .on(EventDateTime.setTo(LocalDateTime.now()))
                 .locationLink("this-is-a-link")
                 .build();
-
-
-
         return be;
     }
 

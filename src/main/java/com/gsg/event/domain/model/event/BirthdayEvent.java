@@ -34,7 +34,8 @@ public class BirthdayEvent extends AbstractEvent
         return false;
     }
 
-
+    @Override
+    public BirthdayEventState getEventState(){ return state;}
 
 
     public static class Builder{
@@ -45,7 +46,7 @@ public class BirthdayEvent extends AbstractEvent
         {
             be.state.setEventId(eventId);
         }
-
+        public Builder withTitle(String title) { be.state.setEventTitle(title); return this;}
         public Builder withWishlists(List<UUID> wishlists){ be.state.setEventWishlists(wishlists); return this; }
         public Builder hostedBy(User eventhost){ be.state.setEventHost(eventhost); return this;}
         public Builder on(EventDateTime eventDT){ be.state.setEventDateTime(eventDT); return this;}

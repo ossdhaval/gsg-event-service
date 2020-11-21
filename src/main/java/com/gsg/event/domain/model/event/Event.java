@@ -6,6 +6,7 @@ import java.util.UUID;
 
 public interface Event
 {
+    enum EventType {BIRTHDAY, MARRIAGE};
     boolean reschedule(EventDateTime dateTime);
     boolean addWishlist(UUID wishlistUUID);
     boolean removeWishlist(UUID wishlistUUID);

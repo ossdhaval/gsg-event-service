@@ -22,4 +22,5 @@ public class EventUtil {
                 .withWishlists(Arrays.asList(UUID.randomUUID(),UUID.randomUUID()))
                 .build();
     }
+
 }

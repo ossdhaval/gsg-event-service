@@ -1,5 +1,7 @@
 package com.gsg.event.domain.model.event;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gsg.kernel.usermgmt.User;
 
 import javax.persistence.Embedded;
@@ -11,12 +13,10 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-public class BirthdayEventState {
+public class BirthdayEventState implements EventState{
     @Id
     private UUID eventId;
-
-
-
+    private Event.EventType eventType;
     private String eventTitle;
     @Transient
     private List<UUID> eventWishlists;
@@ -88,9 +88,17 @@ public class BirthdayEventState {
         this.eventLocationMapLink = eventLocationMapLink;
     }
 
+    public Event.EventType getEventType() {
+        return eventType;
+    }
 
+    public void setEventType(Event.EventType eventType) {
+        this.eventType = eventType;
+    }
 
-
-
+    @Override
+    public String json() throws JsonProcessingException {
+        return new ObjectMapper().writeValueAsString(this);
+    }
 
 }

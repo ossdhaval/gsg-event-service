@@ -1,5 +1,7 @@
 package com.gsg.event.domain.model.event;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gsg.event.infrastructure.repository.event.BirthdayEventRepository;
 import com.gsg.kernel.usermgmt.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +11,12 @@ import java.util.UUID;
 
 public class BirthdayEvent extends AbstractEvent
 {
-    private BirthdayEventState state = new BirthdayEventState();
+    private BirthdayEventState state;
 
     @Autowired
     private BirthdayEventRepository stateRepository;
 
-    private BirthdayEvent(BirthdayEventState state)
+    public BirthdayEvent(BirthdayEventState state)
     {
         this.state = state;
     }
@@ -37,7 +39,6 @@ public class BirthdayEvent extends AbstractEvent
     @Override
     public BirthdayEventState getEventState(){ return state;}
 
-
     public static class Builder{
         private BirthdayEventState bes = new BirthdayEventState();
         private BirthdayEvent be = new BirthdayEvent(bes);
@@ -45,6 +46,8 @@ public class BirthdayEvent extends AbstractEvent
         public Builder(UUID eventId)
         {
             be.state.setEventId(eventId);
+            be.state.setEventType(EventType.BIRTHDAY);
+
         }
         public Builder withTitle(String title) { be.state.setEventTitle(title); return this;}
         public Builder withWishlists(List<UUID> wishlists){ be.state.setEventWishlists(wishlists); return this; }
@@ -54,5 +57,17 @@ public class BirthdayEvent extends AbstractEvent
         public Builder atLocation(Address location){ be.state.setEventLocationAddress(location); return this;}
         public Builder locationLink(String link){ be.state.setEventLocationMapLink(link); return this; }
         public BirthdayEvent build(){ return be;}
+    }
+
+    @Override
+    public String toString()
+    {
+        String jsonString="";
+        try {
+            jsonString = new ObjectMapper().writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return jsonString;
     }
 }

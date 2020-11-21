@@ -17,7 +17,7 @@ public class GSGWebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity hs) throws Exception
     {
         hs.
-                authorizeRequests().mvcMatchers("/**").permitAll();
+                csrf().disable().authorizeRequests().mvcMatchers("/**").permitAll();
 //                headers().frameOptions().sameOrigin()
 //                .and()
 //                .authorizeRequests()
@@ -32,7 +32,7 @@ public class GSGWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity webSecurity){
-        webSecurity.ignoring().mvcMatchers("/css/**", "/webjars/**", "/h2/**");
+        webSecurity.ignoring().mvcMatchers("/css/**", "/webjars/**", "/h2/**", "/swagger-ui/**");
     }
 
     @Override

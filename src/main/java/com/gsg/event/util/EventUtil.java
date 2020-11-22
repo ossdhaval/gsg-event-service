@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.UUID;
 
 public class EventUtil {
-    public static Event createFakeEvent(){
+    public static BirthdayEvent createFakeEvent(){
         return new BirthdayEvent.Builder(UUID.randomUUID())
                 .withTitle("fakeevent1")
                 .locationLink("fakelink1")

@@ -31,5 +31,4 @@ public class EventApplicationService
         return bes.isPresent()?Optional.of(new BirthdayEvent(bes.get())):Optional.empty();
     }
 
-
 }

@@ -13,6 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gsg.event.application.EventApplicationService;
+import com.gsg.event.domain.model.event.BirthdayEvent;
 import com.gsg.event.domain.model.event.Event;
 import com.gsg.event.util.EventUtil;
 import org.junit.jupiter.api.DisplayName;
@@ -35,8 +36,8 @@ public class GsgEventControllerTest
     @Autowired
     MockMvc mvcmock;
 
-    @MockBean
-    EventApplicationService mockEAS;
+//    @MockBean
+//    EventApplicationService mockEAS;
 
     @Test
     @DisplayName("GET /api/event/{id} On Success - return event")
@@ -53,9 +54,11 @@ public class GsgEventControllerTest
     @Test
     @DisplayName("POST /api/event on success - return created entity")
     public void shouldReturnEventIfCreatedSuccessfully() throws Exception {
-        Event fakeevent = EventUtil.createFakeEvent();
+        BirthdayEvent fakeevent = EventUtil.createFakeEvent();
         System.out.println(fakeevent);
+        System.out.println(new ObjectMapper().writeValueAsString(fakeevent));
         System.out.println(new ObjectMapper().writeValueAsString(fakeevent.getEventState()));
+        System.out.println(fakeevent.getEventState().json());
 
         mvcmock.perform(post("/api/event")
                 .contentType(MediaType.APPLICATION_JSON)

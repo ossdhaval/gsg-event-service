@@ -45,6 +45,7 @@ public class GsgEventController
         try {
             return ResponseEntity
                     .status(HttpStatus.CREATED)
+                    .contentType(MediaType.APPLICATION_JSON)
                     .body(newlyCreateEvent.getEventState().json());
         } catch (JsonProcessingException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

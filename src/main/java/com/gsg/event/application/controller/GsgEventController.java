@@ -66,7 +66,7 @@ public class GsgEventController
     }
 
     @ApiOperation("This API returns all events organized by a person")
-    @GetMapping(value = "/api/event/{eventPersonId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/api/event/byperson/{eventPersonId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Event> getEventforPerson(@PathVariable("eventPersonId") String eventPersonId)
     {
         Optional<Event> eventForPerson = eas.findEventByPerson(eventPersonId);
@@ -79,14 +79,25 @@ public class GsgEventController
 
     @ApiOperation("This API returns event with a specific id")
     @GetMapping(value = "/api/event/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Event> getEventById(@PathVariable("id") String eventId)
+    public ResponseEntity<String> getEventByListById(@PathVariable("id") String eventId)
     {
-        return ResponseEntity.badRequest().build();
+        List<String> jsonList = new ArrayList<>();
+        eas.findEventByEventIds(eventId).forEach(e -> {
+            try {
+                jsonList.add(e.json());
+            } catch (JsonProcessingException jsonProcessingException) {
+                jsonProcessingException.printStackTrace();
+            }
+        });
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(jsonList.get(0));
     }
 
     @ApiOperation("This api allows updates to an event. Response will return updated version of event.")
     @PutMapping(value = "/api/event/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Event> updateEvent(@PathVariable("id") String eventId, @RequestBody Event eventUpdates)
+    public ResponseEntity<Event> updateEvent(@PathVariable("id") String eventId, @RequestBody BirthdayEvent eventUpdates)
     {
         return ResponseEntity.badRequest().build();
     }
@@ -100,4 +111,10 @@ public class GsgEventController
         return ResponseEntity.badRequest().build();
     }
 
+    @ApiOperation("readyness check API")
+    @GetMapping("/api/isready")
+    public HttpStatus readynessCheck()
+    {
+        return HttpStatus.OK;
+    }
 }

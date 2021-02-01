@@ -89,10 +89,11 @@ public class GsgEventControllerTest
         Event updatedEvent = EventUtil.createFakeEvent();
 
         String content = new ObjectMapper().writeValueAsString(updatedEvent);
+        System.out.println(">>>>"+content+"<<<<");
 
         mvcmock.perform(put("/api/event/11111")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(new ObjectMapper().writeValueAsString(updatedEvent)))
+                .content(content))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is("11111")));
 

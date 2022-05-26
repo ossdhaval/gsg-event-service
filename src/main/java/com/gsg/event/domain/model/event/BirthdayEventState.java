@@ -59,8 +59,12 @@ public class BirthdayEventState implements EventState{
     }
 
     public void setEventHostId(User eventHost) {
-        this.eventHostId = eventHost.getUserId();
+        this.eventHostId = null;
     }
+
+//    public void setEventHostId(User eventHost) {
+//        this.eventHostId = eventHost.getUserId();
+//    }
 
     public EventDateTime getEventDateTime() {
         return eventDateTime;
